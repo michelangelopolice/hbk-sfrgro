@@ -8,13 +8,19 @@ import cyan from '@material-ui/core/colors/cyan';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-    container: {},
+    container: {
+        
+    },
     margin: {
         margin: theme.spacing.unit,
     },
     cssLabel: {
+        fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif`,
         '&$cssFocused': {
             color: cyan[500],
+            
         },
         color: 'white',
         '&:after': {

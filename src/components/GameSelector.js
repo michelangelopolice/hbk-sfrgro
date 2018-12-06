@@ -17,6 +17,9 @@ const styles = theme => ({
     checked: {},
     selected: {
         color: 'white',
+        fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif`,
     }  
 });
 
