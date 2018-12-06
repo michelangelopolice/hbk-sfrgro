@@ -5,49 +5,55 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import cyan from '@material-ui/core/colors/cyan';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
+    container: {},
     margin: {
-      margin: theme.spacing.unit,
+        margin: theme.spacing.unit,
     },
     cssLabel: {
-      '&$cssFocused': {
-        color: cyan[500],
-      },
-      color: 'white'
+        '&$cssFocused': {
+            color: cyan[500],
+        },
+        color: 'white',
+        '&:after': {
+            color: 'white'
+        },
     },
     cssFocused: {
-        color: cyan[500]
+        color: cyan[500],
     },
     cssUnderline: {
-        '&:before':{
+        '&:before': {
             borderBottomColor: 'white'
-          },
+        },
         '&:after': {
             borderBottomColor: cyan[500],
         },
-        '&&&&:hover:before':{
+        '&&&&:hover:before': {
             borderBottom: '2px solid rgba(0, 255, 255, 0.42)'
         },
     },
-  });
+    button: {
+        margin: theme.spacing.unit,
+        color: cyan[500],
+    },
+});
 
-function ParticipantList(props) { 
+
+function ParticipantList(props) {
     const { classes } = props;
-    
     return (
         <div className={classes.container}>
             <FormControl className={classes.margin}>
-            <InputLabel
-                htmlFor="custom-css-standard-input"
-                classes={{root: classes.cssLabel, focused: classes.cssFocused,}}>
-                Add Participant
-            </InputLabel>
-            <Input id="custom-css-standard-input" classes={{underline: classes.cssUnderline, focused: classes.cssFocused}} />
+                <InputLabel
+                    htmlFor="Add-participant-text"
+                    classes={{ root: classes.cssLabel, focused: classes.cssFocused, }}>
+                    Add Participant
+                </InputLabel>
+                <Input id="Add-participant-text" classes={{ root: classes.cssLabel, underline: classes.cssUnderline, focused: classes.cssFocused }} />
+                <Button id="Add-participant-button" className={classes.button}>Add</Button>
             </FormControl>
         </div>
     );
@@ -55,6 +61,6 @@ function ParticipantList(props) {
 
 ParticipantList.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+};
 
 export default withStyles(styles)(ParticipantList);
