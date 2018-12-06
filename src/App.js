@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import GameSelectorContainer from './containers/GameSelectorContainer'
+import ParticipantListContainer from './containers/ParticipantListContainer'
 
 class App extends Component {
   render() {
@@ -9,9 +10,17 @@ class App extends Component {
         <header className="App-header">
           <img src={require("./oro.gif")} className="Oro" alt="oro" />
           <p>
-            Suck my nuts, assholes.
+            Street Fighter Random Tournament/Random Opponent Generator
           </p>
         </header>
+        <div className="App-body">
+          <div id="Game-selector">
+            <GameSelectorContainer />
+          </div>
+          <div id="Participant-list">
+            <ParticipantListContainer />
+          </div>
+        </div>
       </div>
     );
   }
