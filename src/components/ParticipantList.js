@@ -52,6 +52,7 @@ function ParticipantList(props) {
     const { classes } = props;
     return (
         <div className={classes.container}>
+            <h2>{props.number}</h2>
             <FormControl className={classes.margin}>
                 <InputLabel
                     htmlFor="Add-participant-text"
@@ -59,7 +60,7 @@ function ParticipantList(props) {
                     Add Participant
                 </InputLabel>
                 <Input id="Add-participant-text" classes={{ root: classes.cssLabel, underline: classes.cssUnderline, focused: classes.cssFocused }} />
-                <Button id="Add-participant-button" className={classes.button}>Add</Button>
+                <Button id="Add-participant-button" className={classes.button} onClick={() => {props.handleAdd();}}>Add</Button>
             </FormControl>
         </div>
     );

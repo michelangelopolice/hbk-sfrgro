@@ -2,17 +2,17 @@
 
 .App {
   text-align: center;
+  background-color: #282c34;
+  color: white;
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -20,14 +20,28 @@
 }
 
 .App-body {
-  background-color: #282c34;
-  color: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.App-footer {
+  background-color: #1f2228;
+  font-size: 12px;
+  text-align: right;
+  padding: 5px;
+}
+
 .App-body>div {
   width: 32%;
   margin: 1%;
   padding: 10px;
+}
+
+#Submit-area {
+  padding: 10px;
+}
+
+#Submit-button {
+  background-color: #00ffff;
 }

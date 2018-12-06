@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GameSelectorContainer from './containers/GameSelectorContainer'
 import ParticipantListContainer from './containers/ParticipantListContainer'
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
   render() {
@@ -21,6 +22,10 @@ class App extends Component {
             <ParticipantListContainer />
           </div>
         </div>
+        <div id="Submit-area">
+          <Button id="Submit-button">Submit</Button>
+        </div>
+        <footer className="App-footer">Made by Victor Sarker</footer>
       </div>
     );
   }
