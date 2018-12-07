@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GameSelectorContainer from './containers/GameSelectorContainer'
 import ParticipantListContainer from './containers/ParticipantListContainer'
-import TournamentContainer from './containers/TournamentContainer'
+//import TournamentContainer from './containers/TournamentContainer'
 import Button from '@material-ui/core/Button';
 
 class App extends Component {
@@ -31,11 +31,13 @@ class App extends Component {
   }
 
   startTournament() {
-    this.setState({
-      tournamentStart: true
-    })
-    console.log(this.state.games)
-    console.log(this.state.participants);
+    if (this.state.games.length > 0 && this.state.participants.length > 1) {
+      this.setState({
+        tournamentStart: true
+      })
+      console.log(this.state.games)
+      console.log(this.state.participants);
+    }
   }
   render() {
     return (
@@ -67,7 +69,6 @@ class App extends Component {
           this.state.tournamentStart ?
             <div className="App-body" id="Tournament-div">
               <h1>Tournament Started!</h1><br />
-              <TournamentContainer />
             </div>
             : null
         }
