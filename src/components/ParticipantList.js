@@ -86,6 +86,7 @@ class ParticipantList extends Component {
                 participants: newParticipants,
             });
             this.props.handleAdd();
+            this.props.handleNames(newParticipants);
         }
     }
 
@@ -99,6 +100,7 @@ class ParticipantList extends Component {
                 participants: newParticipants,
             });
             this.props.handleRemove();
+            this.props.handleNames(newParticipants);
         }
     }
 

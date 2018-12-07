@@ -44,6 +44,7 @@ class GameSelector extends Component {
         this.setState({
             checked: newChecked,
         });
+        this.props.handleGames(newChecked);
     };
 
     render() {
