@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GameSelectorContainer from './containers/GameSelectorContainer'
 import ParticipantListContainer from './containers/ParticipantListContainer'
-//import TournamentContainer from './containers/TournamentContainer'
+import TournamentContainer from './containers/TournamentContainer'
 import Button from '@material-ui/core/Button';
 
 class App extends Component {
@@ -68,7 +68,7 @@ class App extends Component {
         {
           this.state.tournamentStart ?
             <div className="App-body" id="Tournament-div">
-              <h1>Tournament Started!</h1><br />
+              <TournamentContainer games={this.state.games} participants={this.state.participants} round={this.state.round} />
             </div>
             : null
         }

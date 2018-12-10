@@ -94,7 +94,7 @@ class ParticipantList extends Component {
         const { participants } = this.state;
         const currentIndex = participants.indexOf(value);
         const newParticipants = [...participants];
-        if(currentIndex !== -1) {
+        if (currentIndex !== -1) {
             newParticipants.splice(currentIndex, 1);
             this.setState({
                 participants: newParticipants,

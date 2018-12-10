@@ -4,7 +4,7 @@ import ParticipantList from '../components/ParticipantList'
 class ParticipantListContainer extends Component {
     constructor() {
         super();
-        this.state={
+        this.state = {
             number: 0,
             participants: [],
         };
@@ -30,10 +30,10 @@ class ParticipantListContainer extends Component {
     }
 
     render() {
-        return(
+        return (
             <div>
                 <h2>Participants:</h2>
-                <ParticipantList handleAdd={this.addParticipant} handleRemove={this.removeParticipant} number={this.state.number} handleNames={this.getListOfNames}/>
+                <ParticipantList handleAdd={this.addParticipant} handleRemove={this.removeParticipant} number={this.state.number} handleNames={this.getListOfNames} />
             </div>
         );
     }

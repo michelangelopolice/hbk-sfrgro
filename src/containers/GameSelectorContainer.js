@@ -12,10 +12,10 @@ class GameSelectorContainer extends Component {
     }
 
     render() {
-        return(
+        return (
             <div>
                 <h2>Select Games:</h2>
-                <GameSelector handleGames={this.getListOfGames}/>
+                <GameSelector handleGames={this.getListOfGames} />
             </div>
         );
     }
