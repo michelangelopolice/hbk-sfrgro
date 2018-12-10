@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Tournament from '../components/Tournament'
 
+
 class TournamentContainer extends Component {
     constructor(props) {
         super(props);
@@ -99,6 +100,7 @@ class TournamentContainer extends Component {
         console.log(`It's ${player1} vs. ${player2} playing ${game}!`);
         console.log(`Current winners: ${this.state.winners}`);
         console.log(`Current losers: ${this.state.losers}`);
+        console.log(`Current participants: ${this.state.participants}`);
     }
 
     nextRound() {
