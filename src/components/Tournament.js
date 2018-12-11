@@ -21,9 +21,12 @@ const Tournament = props => {
                 <h2>Player 1: {props.currentP1}</h2>
                 <h2>Player 2: {props.currentP2}</h2>
                 <h2>Game: {props.currentGame}</h2>
-                <Button id="Start-tournament" className={classes.button} onClick={props.startTournament}>Start Tournament</Button>
-                <Button id="P1-wins" className={classes.button} onClick={() => props.p1Wins(props.currentP1, props.currentP2)}>P1 Wins</Button>
-                <Button id="P2-wins" className={classes.button} onClick={() => props.p1Wins(props.currentP2, props.currentP1)}>P2 Wins</Button>
+                <h3>Round: {props.round}</h3>
+                <Button id="Start-tournament" className={classes.button} onClick={() => props.startTournament()} disabled={false}>Start Tournament</Button>
+                <Button id="P1-wins" className={classes.button} onClick={() => props.p1Wins(props.currentP1, props.currentP2)} disabled={false}>P1 Wins</Button>
+                <Button id="P2-wins" className={classes.button} onClick={() => props.p1Wins(props.currentP2, props.currentP1)} disabled={false}>P2 Wins</Button>
+                <Button id="Next-match" className={classes.button} onClick={props.nextMatch} disabled={false}>Next Match</Button>
+                <Button id="Next-round" className={classes.button} onClick={props.nextRound} disabled={false}>Next Round</Button>
             </div>
             :
             <div>

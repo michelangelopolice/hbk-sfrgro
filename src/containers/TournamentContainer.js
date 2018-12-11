@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Tournament from '../components/Tournament'
 
-
 class TournamentContainer extends Component {
     constructor(props) {
         super(props);
@@ -24,11 +23,32 @@ class TournamentContainer extends Component {
         this.nextMatch = this.nextMatch.bind(this);
         this.nextRound = this.nextRound.bind(this);
         this.endTournament = this.endTournament.bind(this);
+        this.whatsNext = this.whatsNext.bind(this);
     }
 
     initTournament() {
         console.log(`Tournament Starting...`)
+        this.setState({
+            winners: [],
+            loser: [],
+        })
         this.nextMatch();
+    }
+
+    whatsNext() {
+        if (this.state.participants.length > 0) {
+            console.log(`It's time for the next match in Round ${this.state.round}!`);
+            this.nextMatch();
+        }
+        else if (this.state.winners.length > 1) {
+            console.log(`Round ${this.state.round} is done! Time for the next round!`);
+            this.nextRound();
+            this.nextMatch();
+        }
+        else {
+            console.log(`The tournament is over! ${this.state.winners[0]} wins!`);
+            this.endTournament();
+        }
     }
 
     pickRandomGame() {
@@ -74,33 +94,37 @@ class TournamentContainer extends Component {
             losers: newLosers,
         })
 
+        this.whatsNext(); // check what to do next
+
         if (this.state.participants.length > 0) {
-            console.log(`It's time for the next match in Round ${this.state.round}!`);
-            this.nextMatch();
+            // console.log(`It's time for the next match in Round ${this.state.round}!`);
         }
         else if (this.state.winners.length > 1) {
-            console.log(`Round ${this.state.round} is done! Time for the next round!`);
-            this.nextRound();
+            // console.log(`Round ${this.state.round} is done! Time for the next round!`);
         }
         else {
-            console.log(`The tournament is over! ${this.state.winners[0]} wins!`);
-            this.endTournament();
+            // console.log(`The tournament is over! ${this.state.winners[0]} wins!`);
+            // this.endTournament();
         }
     }
 
     nextMatch() {
-        let player1 = this.pickRandomOpponent();
-        let player2 = this.pickRandomOpponent();
-        let game = this.pickRandomGame();
-        this.setState({
-            currentP1: player1,
-            currentP2: player2,
-            currentGame: game,
-        })
-        console.log(`It's ${player1} vs. ${player2} playing ${game}!`);
-        console.log(`Current winners: ${this.state.winners}`);
-        console.log(`Current losers: ${this.state.losers}`);
-        console.log(`Current participants: ${this.state.participants}`);
+        if (this.state.participants.length > 0) {
+            let player1 = this.pickRandomOpponent();
+            let player2 = this.pickRandomOpponent();
+            let game = this.pickRandomGame();
+            this.setState({
+                currentP1: player1,
+                currentP2: player2,
+                currentGame: game,
+            })
+            console.log(`It's ${player1} vs. ${player2} playing ${game}!`);
+            console.log(`Current winners: ${this.state.winners}`);
+            console.log(`Current losers: ${this.state.losers}`);
+            console.log(`Current participants: ${this.state.participants}`);
+        } else {
+            console.log(`Start the next Round`)
+        }
     }
 
     nextRound() {
@@ -116,8 +140,6 @@ class TournamentContainer extends Component {
             winners: [],
             losers: [],
         })
-        console.log(`Now starts Round ${this.state.round}!`);
-        this.nextMatch();
     }
 
     endTournament() {
@@ -133,11 +155,15 @@ class TournamentContainer extends Component {
                     currentP1={this.state.currentP1}
                     currentP2={this.state.currentP2}
                     currentGame={this.state.currentGame}
+                    round={this.state.round}
                     startTournament={this.initTournament}
                     p1Wins={this.playerWinLose}
                     p2Wins={this.playerWinLose}
+                    nextMatch={this.nextMatch}
+                    nextRound={this.nextRound}
                     tournamentOver={this.state.tournamentIsOver}
                     winner={this.state.winners[0]}
+                    genGame={this.genGameTest}
                 />
             </div>
         );
