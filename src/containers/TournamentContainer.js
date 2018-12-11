@@ -13,7 +13,7 @@ class TournamentContainer extends Component {
             currentGame: '',
             currentP1: '',
             currentP2: '',
-            tournamentIsOver: false,
+            tournamentStatus: 'dormant',
         };
         this.initTournament = this.initTournament.bind(this);
         this.pickRandomGame = this.pickRandomGame.bind(this);
@@ -31,6 +31,7 @@ class TournamentContainer extends Component {
         this.setState({
             winners: [],
             loser: [],
+            tournamentStatus: 'started'
         })
         this.nextMatch();
     }
@@ -109,6 +110,12 @@ class TournamentContainer extends Component {
     }
 
     nextMatch() {
+        if (this.state.tournamentStatus === 'roundOver') {
+            this.setState({
+                tournamentStatus: 'started',
+            })
+        }
+
         if (this.state.participants.length > 0) {
             let player1 = this.pickRandomOpponent();
             let player2 = this.pickRandomOpponent();
@@ -123,7 +130,9 @@ class TournamentContainer extends Component {
             console.log(`Current losers: ${this.state.losers}`);
             console.log(`Current participants: ${this.state.participants}`);
         } else {
-            console.log(`Start the next Round`)
+            this.setState({
+                tournamentStatus: "roundOver"
+            })
         }
     }
 
@@ -144,7 +153,7 @@ class TournamentContainer extends Component {
 
     endTournament() {
         this.setState({
-            tournamentIsOver: true
+            tournamentStatus: 'ended'
         })
     }
 
@@ -161,7 +170,7 @@ class TournamentContainer extends Component {
                     p2Wins={this.playerWinLose}
                     nextMatch={this.nextMatch}
                     nextRound={this.nextRound}
-                    tournamentOver={this.state.tournamentIsOver}
+                    tournamentStatus={this.state.tournamentStatus}
                     winner={this.state.winners[0]}
                     genGame={this.genGameTest}
                 />
