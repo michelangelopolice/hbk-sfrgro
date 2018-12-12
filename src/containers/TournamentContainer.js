@@ -95,18 +95,7 @@ class TournamentContainer extends Component {
             losers: newLosers,
         })
 
-        this.whatsNext(); // check what to do next
-
-        if (this.state.participants.length > 0) {
-            // console.log(`It's time for the next match in Round ${this.state.round}!`);
-        }
-        else if (this.state.winners.length > 1) {
-            // console.log(`Round ${this.state.round} is done! Time for the next round!`);
-        }
-        else {
-            // console.log(`The tournament is over! ${this.state.winners[0]} wins!`);
-            // this.endTournament();
-        }
+        this.whatsNext();
     }
 
     nextMatch() {
@@ -126,9 +115,6 @@ class TournamentContainer extends Component {
                 currentGame: game,
             })
             console.log(`It's ${player1} vs. ${player2} playing ${game}!`);
-            console.log(`Current winners: ${this.state.winners}`);
-            console.log(`Current losers: ${this.state.losers}`);
-            console.log(`Current participants: ${this.state.participants}`);
         } else {
             this.setState({
                 tournamentStatus: "roundOver"
@@ -137,12 +123,7 @@ class TournamentContainer extends Component {
     }
 
     nextRound() {
-        console.log(`NEXT ROUND INVOKED`);
-        console.log(`CURRENT WINNERS:`);
-        console.log(this.state.winners)
         let newParticipants = this.state.winners;
-        console.log(`NEW PARTICIPANTS FOR NEXT ROUND:`);
-        console.log(newParticipants);
         this.setState({
             round: this.state.round + 1,
             participants: newParticipants,
@@ -173,6 +154,8 @@ class TournamentContainer extends Component {
                     tournamentStatus={this.state.tournamentStatus}
                     winner={this.state.winners[0]}
                     genGame={this.genGameTest}
+                    randomTest={this.randomTest}
+                    participants={this.state.participants}
                 />
             </div>
         );

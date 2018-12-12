@@ -110,7 +110,7 @@ class ParticipantList extends Component {
             <div className={classes.container}>
                 <h2>{this.props.number}</h2><br />
                 <div>
-                    <List>
+                   <List>
                         {this.state.participants.map(value => (
                             <ListItem key={value}>
                                 <ListItemText classes={{ primary: classes.selected }} primary={`${this.state.participants.indexOf(value) + 1}. ${value}`} />
