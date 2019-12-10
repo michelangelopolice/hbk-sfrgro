@@ -23,7 +23,7 @@ const styles = theme => ({
     }
 });
 
-const games = ["Street Fighter", "Street Fighter II", "Street Fighter II: Champion Edition", "Street Fighter II Turbo: Hyper Fighting", "Super Street Fighter II", "Super Street Fighter II Turbo", "Street Fighter Alpha", "Street Fighter Alpha 2", "Street Fighter Alpha 3", "Street Fighter III", "Street Fighter III 2nd Impact", "Street Fighter III 3rd Strike", "Ultra Street Fighter IV", "Street Fighter V: Arcade Edition"]
+const games = ["Street Fighter", "Street Fighter II", "Street Fighter II: Champion Edition", "Street Fighter II Turbo: Hyper Fighting", "Super Street Fighter II", "Super Street Fighter II Turbo", "Street Fighter Alpha", "Street Fighter Alpha 2", "Street Fighter Alpha 3", "Street Fighter III", "Street Fighter III 2nd Impact", "Street Fighter III 3rd Strike", "Ultra Street Fighter IV", "Street Fighter V: Arcade Edition", "Tekken 7", "Marvel vs. Capcom 2", "Ultimate Marvel vs. Capcom 3", "Marvel vs. Capcom Infinite", "Soul Calibur VI", "The King of Fighters XIV", "Injustice 2", "Windjammers", "UNIST", "Samurai Showdown"]
 
 class GameSelector extends Component {
     state = {

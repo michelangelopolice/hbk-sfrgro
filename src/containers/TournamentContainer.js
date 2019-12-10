@@ -7,13 +7,13 @@ class TournamentContainer extends Component {
         this.state = {
             games: props.games,
             participants: props.participants,
-            winners: [],
-            losers: [],
-            round: 1,
-            currentGame: '',
-            currentP1: '',
-            currentP2: '',
-            tournamentStatus: 'dormant',
+            winners: props.winners,
+            losers: props.losers,
+            round: props.round,
+            currentGame: props.currentGame,
+            currentP1: props.currentP1,
+            currentP2: props.currentP2,
+            tournamentStatus: props.tournamentStatus,
         };
         this.initTournament = this.initTournament.bind(this);
         this.pickRandomGame = this.pickRandomGame.bind(this);
@@ -28,6 +28,7 @@ class TournamentContainer extends Component {
 
     initTournament() {
         console.log(`Tournament Starting...`)
+        window.localStorage.setItem("tournamentStatus", 'started');
         this.setState({
             winners: [],
             loser: [],
@@ -63,6 +64,7 @@ class TournamentContainer extends Component {
             let index = Math.floor(Math.random() * newParticipants.length)
             let participant = (newParticipants[index])
             newParticipants.splice(index, 1)
+            window.localStorage.setItem("participants", JSON.stringify(newParticipants));
             this.setState({
                 participants: newParticipants,
             })
@@ -78,6 +80,7 @@ class TournamentContainer extends Component {
         let index = Math.floor(Math.random() * newLosers.length);
         let loser = (newLosers[index]);
         newLosers.splice(index, 1);
+        window.localStorage.setItem("losers", JSON.stringify(newLosers));
         this.setState({
             losers: newLosers,
         })
@@ -90,16 +93,18 @@ class TournamentContainer extends Component {
         let newLosers = this.state.losers;
         newWinners.push(winner);
         newLosers.push(loser);
+        window.localStorage.setItem("winners", JSON.stringify(newWinners));
+        window.localStorage.setItem("losers", JSON.stringify(newLosers));
         this.setState({
             winners: newWinners,
             losers: newLosers,
         })
-
         this.whatsNext();
     }
 
     nextMatch() {
         if (this.state.tournamentStatus === 'roundOver') {
+            window.localStorage.setItem("tournamentStatus", 'started');
             this.setState({
                 tournamentStatus: 'started',
             })
@@ -109,13 +114,18 @@ class TournamentContainer extends Component {
             let player1 = this.pickRandomOpponent();
             let player2 = this.pickRandomOpponent();
             let game = this.pickRandomGame();
+            window.localStorage.setItem("currentP1", player1);
+            window.localStorage.setItem("currentP2", player2);
+            window.localStorage.setItem("currentGame", game);
             this.setState({
                 currentP1: player1,
                 currentP2: player2,
                 currentGame: game,
             })
+            
             console.log(`It's ${player1} vs. ${player2} playing ${game}!`);
         } else {
+            window.localStorage.setItem("tournamentStatus", 'roundOver');
             this.setState({
                 tournamentStatus: "roundOver"
             })
@@ -124,6 +134,10 @@ class TournamentContainer extends Component {
 
     nextRound() {
         let newParticipants = this.state.winners;
+        window.localStorage.setItem("round", this.state.round + 1);
+        window.localStorage.setItem("participants", JSON.stringify(newParticipants));
+        window.localStorage.setItem("winners", JSON.stringify([]));
+        window.localStorage.setItem("losers", JSON.stringify([]));
         this.setState({
             round: this.state.round + 1,
             participants: newParticipants,
@@ -136,6 +150,7 @@ class TournamentContainer extends Component {
         this.setState({
             tournamentStatus: 'ended'
         })
+        window.localStorage.clear();
     }
 
     render() {
@@ -156,6 +171,8 @@ class TournamentContainer extends Component {
                     genGame={this.genGameTest}
                     randomTest={this.randomTest}
                     participants={this.state.participants}
+                    winners={this.state.winners}
+                    losers={this.state.losers}
                 />
             </div>
         );

@@ -50,6 +50,17 @@ body {
   padding: 10px;
 }
 
-#Submit-button {
+#Submit-button, #Resume-button {
   background-color: #00ffff;
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+}
+
+#Reset-button {
+  background-color: #a40000;
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+  margin-left: 100px;
 }

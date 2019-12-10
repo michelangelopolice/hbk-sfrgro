@@ -25,6 +25,7 @@ const styles = theme => ({
 
 const Tournament = props => {
     const { classes } = props;
+    console.log(props);
     if (props.tournamentStatus === "dormant") {
         return (
             <div>
@@ -49,20 +50,20 @@ const Tournament = props => {
             </div>
         )
     } else if (props.tournamentStatus === "roundOver") {
-            return(
+        return (
             <div>
-                <h1>End of Round {props.round-1}</h1> <br />
+                <h1>End of Round {props.round - 1}</h1> <br />
                 <h3>Players Through To Next Round:</h3>
                 <List>
-                        {props.participants.map(value => (
-                            <ListItem key={value}>
-                                <ListItemText classes={{ primary: classes.selected }} primary={`${value}`} />
-                            </ListItem>
-                        ))}
-                    </List>
+                    {props.participants.map(value => (
+                        <ListItem key={value}>
+                            <ListItemText classes={{ primary: classes.selected }} primary={`${value}`} />
+                        </ListItem>
+                    ))}
+                </List>
                 <Button id="Next-match" className={classes.button} onClick={props.nextMatch} disabled={false}>Next Match</Button>
             </div>
-                )
+        )
     } else {
         return (
             <div>
