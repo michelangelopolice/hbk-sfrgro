@@ -81,11 +81,13 @@ class ParticipantList extends Component {
         const currentIndex = participants.indexOf(value);
         const newParticipants = [...participants];
         if (value.length > 0 && currentIndex === -1) {
-            newParticipants.push(value);
+            value.split(',').forEach((e) => {
+                newParticipants.push(e);
+            });
             this.setState({
                 participants: newParticipants,
             });
-            this.props.handleAdd();
+            this.props.handleAdd(newParticipants.length);
             this.props.handleNames(newParticipants);
         }
     }
@@ -110,7 +112,7 @@ class ParticipantList extends Component {
             <div className={classes.container}>
                 <h2>{this.props.number}</h2><br />
                 <div>
-                   <List>
+                    <List>
                         {this.state.participants.map(value => (
                             <ListItem key={value}>
                                 <ListItemText classes={{ primary: classes.selected }} primary={`${this.state.participants.indexOf(value) + 1}. ${value}`} />

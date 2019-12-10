@@ -13,9 +13,9 @@ class ParticipantListContainer extends Component {
         this.getListOfNames = this.getListOfNames.bind(this);
     }
 
-    addParticipant() {
+    addParticipant(length) {
         this.setState({
-            number: this.state.number + 1
+            number: length
         });
     }
 
