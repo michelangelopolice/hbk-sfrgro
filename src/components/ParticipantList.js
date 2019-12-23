@@ -90,6 +90,7 @@ class ParticipantList extends Component {
             this.props.handleAdd(newParticipants.length);
             this.props.handleNames(newParticipants);
         }
+        document.getElementById('Add-participant-text').value = '';
     }
 
     removeFromList = value => () => {
